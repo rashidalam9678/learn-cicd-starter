@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Build Binary
+      run: ./scripts/buildprod.sh
+
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
       with:
@@ -18,5 +21,9 @@ jobs:
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v1'
 
-    - name: 'Use gcloud CLI'
-      run: 'gcloud info'
+    - name: 'Use gcloud CLI to get Info'
+      run: gcloud info
+
+    - name: 'Push Image to Artifact regsitry'
+      run: gcloud builds submit --tag asia-south2-docker.pkg.dev/notely-405406/notely-ar-repo/notely:l2 .
+
