@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Build Binary
-      run: ./scripts/buildprod.sh
+      run: ./scripts/buildprod
 
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
